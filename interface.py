@@ -87,44 +87,44 @@ while True:
         if event == 'Salvar':
             try:
                 datetime.strptime(data, '%Y-%m-%d')
-            except:
-                sg.popup('formato da data incorreta')
-            if concluido == True:
-                try:
-                    adicionar_dados(conexao, id, tarefa, 'sim', data )
-                    sg.popup('Dados salvos com sucesso')
-                except:
-                    sg.popup('ID já está sendo utilizado')
-            else:
-                try:
-                    adicionar_dados(conexao, id, tarefa, 'não', data )
-                    sg.popup('Dados salvos com sucesso')
-                except:
-                    sg.popup('ID já está sendo utilizado')
-                    
-        elif event == 'salvar_voltar':
-                try:
-                    datetime.strptime(data, '%Y-%m-%d')
-                except:
-                    sg.popup('formato da data incorreta')
-
                 if concluido == True:
                     try:
                         adicionar_dados(conexao, id, tarefa, 'sim', data )
                         sg.popup('Dados salvos com sucesso')
-                        janela_adicionar_.hide()
-                        janela_principal_.un_hide()
                     except:
                         sg.popup('ID já está sendo utilizado')
-
                 else:
                     try:
                         adicionar_dados(conexao, id, tarefa, 'não', data )
                         sg.popup('Dados salvos com sucesso')
-                        janela_adicionar_.hide()
-                        janela_principal_.un_hide()
                     except:
                         sg.popup('ID já está sendo utilizado')
+            except:
+                sg.popup('formato da data incorreta')
+            
+                    
+        elif event == 'salvar_voltar':
+                try:
+                    datetime.strptime(data, '%Y-%m-%d')
+                    if concluido == True:
+                        try:
+                            adicionar_dados(conexao, id, tarefa, 'sim', data )
+                            sg.popup('Dados salvos com sucesso')
+                            janela_adicionar_.hide()
+                            janela_principal_.un_hide()
+                        except:
+                            sg.popup('ID já está sendo utilizado')
+                    else:
+                        try:
+                            adicionar_dados(conexao, id, tarefa, 'não', data )
+                            sg.popup('Dados salvos com sucesso')
+                            janela_adicionar_.hide()
+                            janela_principal_.un_hide()
+                        except:
+                            sg.popup('ID já está sendo utilizado')
+                except:
+                    sg.popup('formato da data incorreta')
+
                
         elif event == 'voltar':
             janela_adicionar_.hide()
